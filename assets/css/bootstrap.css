@@ -957,7 +957,7 @@ img {
           transition: all .2s ease-in-out;
 }
 .circle{
-  height: 128px;
+  width: 128px;
   height: 128px;
   overflow: hidden;
   border-radius: 50%;
