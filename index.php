@@ -9,7 +9,6 @@ if (isset($_GET['page']) && in_array($_GET['page'], $access))
     $page = $_GET['page'];
 }
 require('apps/traitement_users.php');
-require('apps/traitement_articles.php');
-require('apps/traitement_comments.php');
+require('apps/traitement_messages.php');
 require('apps/skel.php');
 ?>
