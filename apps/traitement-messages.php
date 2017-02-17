@@ -1,42 +1,38 @@
 <?php
-var_dump($_POST);
+// <!-- 1. isset OU array_key_exists = vérification des variables
+// 2. sécurisation/validation des données (ex : verification de longueur)
+// 3. traitement des données (enregistrer les informations vers base de données)
+// 4. redirection (PRG : POST REDIRECT GET) UX et Sécurité -->
 
-if(isset($_POST['content'],$_POST['id_article'],$_SESSION['id']))
+if (isset( $_POST['message']))
 {
-	$content = $_POST['content'];
-	$id_article = $_POST['id_article'];
+	// Etape 2 : Validation des données
 	
-	if (strlen($content) > 500)
-	{
-		$errors[] = "Contenu trop long (> 500)";
-	}
-	else if (strlen($content) < 2)
-	{
-		$errors[] = "Contenu trop court (< 2)";
-	}
+	$message = $_POST['message'];
 	
-	// Etape 3
-	if (count($errors) == 0)
+	if (strlen($message) > 4094)
 	{
-		$content = mysqli_real_escape_string($db, $content);
-		$id_article=intval($id_article);
-		// $content = intval($content);
+		$errors[] = "Message trop long (> 4095)";
+	}
+	else if (strlen($message) < 2)
+	{
+		$errors[] = "Message trop court (< 20)";
+	}
 
-
-		$res = mysqli_query($db, "INSERT INTO comments (content, id_article, id_author) VALUES('".$content."', '".$id_article."','".$_SESSION['id']."')");
-		if ($res)
-		{
+	// Etape 3 : Traitement des données
+	if (count($errors)==0)
+	{
 		
-			// Etape 4
-			header('Location: index.php?page=article&id='.$id_article);
-			exit;
-		}
-		else
-		{
-			$errors[] = mysqli_error($db);
-			$errors[] = "Erreur interne";
-		}
-	}
-}
+		$message = mysqli_real_escape_string($db, $message);
+		
+		mysqli_query($db, "INSERT INTO messages (id_author, content) VALUES('".$_SESSION['id']."', '".$message."')");
+	/*
+	INSERT INTO articles (title, content, author) VALUES('titre', 'contenu', 'auteur')
+	*/
+	header('Location: index.php?page=message');
 
+	exit;
+	}
+	
+}
 ?>
