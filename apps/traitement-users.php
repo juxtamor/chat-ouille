@@ -105,6 +105,7 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 							$_SESSION['id']=$user['id'];
 							$_SESSION['login']=$user['login'];
 							$_SESSION['admin']=$user['admin'];
+							$_SESSION['avatar']=$user['avatar'];
 							// Etape 4
 							header('Location: index.php?page=messages');
 							exit;
