@@ -4,9 +4,9 @@ $db = mysqli_connect("192.168.1.79","chat-ouille","chat-ouille","chat-ouille"); 
 session_start();// http://php.net/manual/fr/function.session-start.php
 $access = ["message", "login", "register", "create-message"];
 $page = "message";
-if (isset($_GET['message']) && in_array($_GET['message'], $access))
+if (isset($_GET['page']) && in_array($_GET['page'], $access))
 {
-    $page = $_GET['message'];
+    $page = $_GET['page'];
 }
 require('apps/traitement-users.php');
 require('apps/traitement-messages.php');
