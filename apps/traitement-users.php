@@ -127,10 +127,10 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 			}
 		}
 	}
-	// if ($action == "avatar")
-	// {
-	// 	$avatar = $_POST['avatar'];
-	// 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
-	// }
+	 if ($action == "avatar")
+	 {
+	 	$avatar = $_POST['avatar'];
+	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
+	 }
 }
 ?>

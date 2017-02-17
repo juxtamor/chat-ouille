@@ -25,13 +25,21 @@ if (isset( $_POST['message']))
 		
 		$message = mysqli_real_escape_string($db, $message);
 		
-		mysqli_query($db, "INSERT INTO messages (id_author, content) VALUES('".$_SESSION['id']."', '".$message."')");
+		$res = mysqli_query($db, "INSERT INTO messages (id_author, content) VALUES('".$_SESSION['id']."', '".$message."')");
+		if ($res)
+		{
+			header('Location: index.php?page=message');
+
+			exit;
+			
+		}
+		else
+		{
+			$errors[] = "Erreur interne";
+		}
 	/*
 	INSERT INTO articles (title, content, author) VALUES('titre', 'contenu', 'auteur')
 	*/
-	header('Location: index.php?page=message');
-
-	exit;
 	}
 	
 }
