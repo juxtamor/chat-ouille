@@ -1,0 +1,15 @@
+<div class="panel-heading">
+	<h1> Bienvenue <?=htmlentities($_SESSION['login'])?> </h1>
+
+	<div class="avatar">
+		<img class="media-object img-circle " src="">
+	</div>
+
+	<input type="hidden" name="action" value="avatar">
+
+	<div class="form-group">
+		<label for="login">Télécharger votre photo de profil</label>
+		<input type="text" class="form-control" id="photo" name="photo" placeholder="photo">
+		<button type="submit" class="btn btn-default">update</button>
+	</div>
+</div>
