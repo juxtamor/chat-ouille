@@ -56,7 +56,7 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 		// $password1 = mysqli_real_escape_string($db, $password1);
 		// $password2 = mysqli_real_escape_string($db, $password2);
 
-		$res = mysqli_query($db, "INSERT INTO users (login, birthday, email,passeword) VALUES('".$login."', '".$birthday."', '".$email."', '".$hash."')");
+		$res = mysqli_query($db, "INSERT INTO users (login, birthdate, email,password) VALUES('".$login."', '".$birthdate."', '".$email."', '".$hash."')");
 
 		if ($res)
 		{
@@ -92,14 +92,14 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 					// $user['id'], $user['email'], $user['login'], $user['password'], $user['birthdate']
 					if ($user)
 					{
-						var_dump($password, $user['passeword'], password_verify($password, $user['passeword']));
-						if (password_verify($password, $user['passeword']))
+						var_dump($password, $user['password'], password_verify($password, $user['password']));
+						if (password_verify($password, $user['password']))
 						{
 							$_SESSION['id']=$user['id'];
 							$_SESSION['login']=$user['login'];
 							$_SESSION['admin']=$user['admin'];
 							// Etape 4
-							header('Location: index.php?page=articles');
+							header('Location: index.php?page=messages');
 							exit;
 						}
 						else
