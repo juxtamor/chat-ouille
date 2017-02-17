@@ -2,7 +2,7 @@
 	<h1> Bienvenue <?=htmlentities($_SESSION['login'])?> </h1>
 
 	<div class="avatar">
-		<img class="media-object img-circle " src="">
+		<img class="media-object img-circle " src='<?=htmlentities($_SESSION['avatar'])?>'>
 	</div>
 
 	<input type="hidden" name="action" value="avatar">
