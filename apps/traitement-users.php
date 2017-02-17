@@ -1,12 +1,16 @@
 <?php
 // Etape 0
 // var_dump($_POST);
+
+///////////////////////LOG OUT////////////////////
 if (isset($_GET['page']) && $_GET['page'] == "logout")
 {
 	session_destroy();
 	header('Location: index.php');
 	exit;
 }
+
+/////////////////////REGISTER//////////////////////
 // Etape 1
 if (isset($_POST['action']))
 {
@@ -15,7 +19,7 @@ if (isset($_POST['action']))
 	{
 
 if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['password1'], $_POST['password2']))
-{
+	{
 	// Etape 2
 	$login = $_POST['login'];// 31
 	$birthdate = $_POST['birthdate'];// date
@@ -23,25 +27,25 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 	$password1 = $_POST['password1'];// 510
 	$password2 = $_POST['password2'];// $password1
 	if (strlen($login) > 31)
-	{
-		$errors[] = "Login trop long (> 31)";
-	}
+		{
+			$errors[] = "Login trop long (> 31)";
+		}
 	else if (strlen($login) < 2)
-	{
-		$errors[] = "Login trop court (< 2)";
-	}
+		{
+			$errors[] = "Login trop court (< 2)";
+		}
 	if (strlen($password1) > 72)
-	{
-		$errors[] = "Password trop long (> 72)";
-	}
+		{
+			$errors[] = "Password trop long (> 72)";
+		}
 	else if ($password1 != $password2)
-	{
-		$errors[] = "Les mots de passe ne correspondent pas";
-	}
+		{
+			$errors[] = "Les mots de passe ne correspondent pas";
+		}
 	if (filter_var($email, FILTER_VALIDATE_EMAIL) == false)
-	{
-		$errors[] = "Email invalide";
-	}
+		{
+			$errors[] = "Email invalide";
+		}
 
 	
 	// Etape 3
@@ -72,6 +76,9 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 			}
 		}
 	}
+
+
+	///////////////////////////////LOGIN//////////////////////////////
 	if ($action == "login")
 	{
 		// Etape 1
@@ -118,6 +125,11 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 				}
 			}
 		}
+	}
+	if ($action == "avatar")
+	{
+		$avatar = $_POST['avatar'];
+		$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
 	}
 }
 ?>
