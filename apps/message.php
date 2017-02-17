@@ -3,12 +3,12 @@ if (isset($_GET['id']))
 {
 	// $article
 	$id = intval($_GET['id']);
-	$res = mysqli_query($db, "SELECT comments.*, users.login FROM comments, users WHERE users.id = comments.id_author AND comments.id_article=".$article['id']);
+	$res = mysqli_query($db, "SELECT messages.*, users.login FROM messages, users WHERE users.id = messages.id_author");
 
-	while($comments = mysqli_fetch_assoc($res))
+	while($messages = mysqli_fetch_assoc($res))
 	{
 		// var_dump($comments);
-		require('views/comments.phtml');
+		require('views/message.phtml');
 	}
 }
 ?>
