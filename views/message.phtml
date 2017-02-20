@@ -1,4 +1,4 @@
-<div >
+<div>
     <h1>tchat-Ouille</h1>
     <div class="js_mess_list">
     <?php require('apps/message-elem.php'); ?>
@@ -6,7 +6,10 @@
     <?php require('apps/create-message.php'); ?>
 </div>
 
+
 <script>
-	
-	
+setInterval(function()
+{
+	$('.js_mess_list').load('index.php?page=message-elem&ajax');
+}, 500);
 </script>
