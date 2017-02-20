@@ -107,7 +107,7 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 							$_SESSION['admin']=$user['admin'];
 							$_SESSION['avatar']=$user['avatar'];
 							// Etape 4
-							header('Location: index.php?page=messages');
+							header('Location: index.php?page=message');
 							exit;
 						}
 						else
@@ -130,6 +130,12 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 	 if ($action == "avatar")
 	 {
 	 	$avatar = $_POST['avatar'];
+	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
+	 }
+
+	 if ($action == "users")
+	 {
+	 	$users = $_POST['users'];
 	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
 	 }
 }
