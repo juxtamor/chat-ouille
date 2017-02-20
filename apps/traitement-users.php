@@ -2,6 +2,11 @@
 // Etape 0
 // var_dump($_POST);
 
+
+ if (isset($_SESSION["id"]))
+ {
+  	$res = mysqli_query($db, "UPDATE users SET last_act=CURRENT_TIMESTAMP WHERE id=".$_SESSION['id']);
+ }
 ///////////////////////LOG OUT////////////////////
 if (isset($_GET['page']) && $_GET['page'] == "logout")
 {
@@ -133,10 +138,5 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
 	 }
 
-	 if ($action == "users")
-	 {
-	 	$users = $_POST['users'];
-	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
-	 }
 }
 ?>
