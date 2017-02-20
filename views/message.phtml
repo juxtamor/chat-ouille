@@ -1,10 +1,41 @@
-<div>
-    <h1>tchat-Ouille</h1>
-    <?php require('apps/create-message.php'); ?>
-    <div class="js_mess_list">
-    <?php require('apps/message-elem.php'); ?>
-    </div>
-</div>
+<div class="row " style="padding-top:40px;">
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="content">
+
+			    <h1>tchat-Ouille</h1>
+			    <?php require('apps/create-message.php'); ?>
+			    <div class="js_mess_list">
+			    	<div class="panel-body">
+					<ul class="media-list">
+
+			    		<?php require('apps/message-elem.php'); ?>
+
+					</ul>
+					</div>
+
+			    </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+  		<div class="panel panel-primary">
+    		<div class="panel-heading">
+	       USER
+	    	</div>
+	    	<div class="js_users">
+	    	<div class="panel-body">
+        		<ul class="media-list">
+           
+					<?php require('apps/users-elem.php'); ?>
+
+        		</ul>
+      		</div>
+      		</div>
+   		</div>
+	</div>
+
 
 
 <script>
@@ -12,4 +43,11 @@ setInterval(function()
 {
 	$('.js_mess_list').load('index.php?page=message-elem&ajax');
 }, 500);
+
+// setInterval(function()
+// {
+// 	$('.js_users').load('index.php?page=users-elem&ajax');
+// }, 15000);
+
+
 </script>
