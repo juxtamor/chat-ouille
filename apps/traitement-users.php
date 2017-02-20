@@ -132,11 +132,11 @@ if (isset($_POST['login'], $_POST['birthdate'], $_POST['email'], $_POST['passwor
 			}
 		}
 	}
-	 if ($action == "avatar")
+	 if ($action == "avatar" && isset($_SESSION["id"], $_POST['avatar']))
 	 {
+	 	$avatar = mysqli_real_escape_string($db, $avatar);
 	 	$avatar = $_POST['avatar'];
-	 	$res = mysqli_query($db, "UPDATE users (avatar) VALUES('".$avatar."')");
+	 	$res = mysqli_query($db, "UPDATE users SET avatar='".$avatar."' WHERE id=".$_SESSION['id']);
 	 }
-
-}
+ }
 ?>
