@@ -1,0 +1,48 @@
+users ::
+UPDATE
+CREATE
+SELECT
+LOGOUT
+
+messages ::
+CREATE
+SELECT (ORDER BY)
+DELETE
+
+
+///////////
+Fichier à avoir :
+
+
+index.php
+////////////////////////////////////
+	USERS :
+
+	login::
+	login.php / .phtml
+
+	register::
+	register.php / .phtml
+
+	traitement-users.php
+
+////////////////////////////////////
+	SKEL :
+	
+	skel.php / skel.phtml (structure HTML)
+	
+	header.php / .phtml
+	header-in.phtml
+	header-admin.phtml
+	
+	container.php / .phtml
+
+	footer.php / .phtml
+
+	create-message.php / .phtml
+	traitement-message.php
+
+	erreur.php / .phtml
+
+////////////////////////////////////
+	Dossiers : APPS+VIEWS+CSS(BOOTSTRAP)+JS+IMAGES
